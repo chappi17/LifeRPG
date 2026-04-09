@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:paddingTop="36dp">
+
+        <!-- Sub-tabs -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btn_weekly"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="주간"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <Button
+                android:id="@+id/btn_monthly"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="월별"
+                android:textSize="12sp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        </LinearLayout>
+
+        <!-- ── WEEKLY ── -->
+        <LinearLayout
+            android:id="@+id/weekly_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/weekly_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📊 습관을 추가하면 통계가 나타나요!"
+                android:textSize="14sp"
+                android:textColor="@color/text_muted"
+                android:gravity="center"
+                android:padding="40dp"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/weekly_chart_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Summary 2x2 grid -->
+                <androidx.gridlayout.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:columnCount="2"
+                    app:rowCount="2">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        app:cardBackgroundColor="@color/card"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        android:layout_margin="4dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                            <TextView android:id="@+id/tv_week_avg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="7일 평균 달성률" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        app:cardBackgroundColor="@color/card"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        android:layout_margin="4dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                            <TextView android:id="@+id/tv_week_streak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="최장 연속 🔥" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        app:cardBackgroundColor="@color/card"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        android:layout_margin="4dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                            <TextView android:id="@+id/tv_week_today" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="오늘 완료" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_columnWeight="1"
+                        app:cardBackgroundColor="@color/card"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        android:layout_margin="4dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                            <TextView android:id="@+id/tv_week_xp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="오늘 획득 XP ✨" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.gridlayout.widget.GridLayout>
+
+                <!-- Weekly bar chart -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/card"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="주간 달성률" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginBottom="12dp"/>
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/weekly_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Habit rates -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/card"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="습관별 7일 달성률" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+                        <LinearLayout android:id="@+id/habit_rates_container" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ── MONTHLY ── -->
+        <LinearLayout
+            android:id="@+id/monthly_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Month nav -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="12dp">
+                <Button android:id="@+id/btn_prev_month" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="36dp" android:layout_height="36dp" android:text="‹" android:textSize="18sp" android:textColor="@color/text_primary" android:padding="0dp"/>
+                <TextView android:id="@+id/tv_month_title" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="16sp" android:textStyle="bold" android:textColor="@color/gold" android:gravity="center"/>
+                <Button android:id="@+id/btn_next_month" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="36dp" android:layout_height="36dp" android:text="›" android:textSize="18sp" android:textColor="@color/text_primary" android:padding="0dp"/>
+            </LinearLayout>
+
+            <!-- Monthly summary -->
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:columnCount="2">
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" app:cardBackgroundColor="@color/card" app:cardCornerRadius="12dp" app:cardElevation="0dp" android:layout_margin="4dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                        <TextView android:id="@+id/tv_month_avg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="월 평균 달성률" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" app:cardBackgroundColor="@color/card" app:cardCornerRadius="12dp" app:cardElevation="0dp" android:layout_margin="4dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                        <TextView android:id="@+id/tv_month_perfect" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="완벽한 날 ✨" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" app:cardBackgroundColor="@color/card" app:cardCornerRadius="12dp" app:cardElevation="0dp" android:layout_margin="4dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                        <TextView android:id="@+id/tv_month_days" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="기록된 날수" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" app:layout_columnWeight="1" app:cardBackgroundColor="@color/card" app:cardCornerRadius="12dp" app:cardElevation="0dp" android:layout_margin="4dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="14dp">
+                        <TextView android:id="@+id/tv_month_checks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="26sp" android:textStyle="bold" android:textColor="@color/gold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="총 달성 횟수" android:textSize="10sp" android:textColor="@color/text_muted"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- Heatmap calendar -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/card" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="달성률 히트맵" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginBottom="10dp"/>
+                    <android.widget.GridLayout android:id="@+id/calendar_grid" android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="7"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Monthly bar chart -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/card" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="일별 달성률" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginBottom="12dp"/>
+                    <com.github.mikephil.charting.charts.BarChart android:id="@+id/monthly_chart" android:layout_width="match_parent" android:layout_height="130dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Monthly habit rates -->
+            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/card" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="습관별 이달 달성률" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginBottom="8dp"/>
+                    <LinearLayout android:id="@+id/month_habit_rates" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

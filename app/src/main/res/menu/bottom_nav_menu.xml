@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_quest"
+        android:icon="@drawable/ic_quest"
+        android:title="퀘스트"/>
+    <item
+        android:id="@+id/nav_char"
+        android:icon="@drawable/ic_character"
+        android:title="캐릭터"/>
+    <item
+        android:id="@+id/nav_stats"
+        android:icon="@drawable/ic_stats"
+        android:title="통계"/>
+</menu>

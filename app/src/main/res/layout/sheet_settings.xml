@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/card"
+    android:paddingBottom="32dp">
+
+    <View android:layout_width="36dp" android:layout_height="4dp" android:layout_gravity="center_horizontal" android:layout_marginTop="12dp" android:background="@color/border"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="20dp" android:gravity="center_vertical">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="⚙️ 설정" android:textSize="16sp" android:textStyle="bold" android:textColor="@color/gold"/>
+        <Button android:id="@+id/btn_close" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="✕" android:textSize="18sp" android:textColor="@color/text_muted"/>
+    </LinearLayout>
+
+    <!-- Info card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardBackgroundColor="@color/card2"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="14dp" android:gravity="center_vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📦" android:textSize="22sp" android:layout_marginEnd="12dp"/>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/tv_data_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="13sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="기기 내 로컬 저장소에 보관됩니다" android:textSize="11sp" android:textColor="@color/text_muted"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Export / Import -->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="데이터 백업" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginStart="22dp" android:layout_marginBottom="8dp"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="20dp" android:layout_marginEnd="20dp" android:layout_marginBottom="16dp">
+        <Button android:id="@+id/btn_export" android:layout_width="match_parent" android:layout_height="52dp" android:text="⬇  백업 내보내기" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+        <Button android:id="@+id/btn_import" android:layout_width="match_parent" android:layout_height="52dp" android:text="⬆  백업 불러오기" style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+    </LinearLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/border" android:layout_marginStart="20dp" android:layout_marginEnd="20dp" android:layout_marginBottom="16dp"/>
+
+    <!-- Reset -->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="위험 구역" android:textSize="10sp" android:textStyle="bold" android:textColor="@color/text_muted" android:letterSpacing="0.1" android:layout_marginStart="22dp" android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="🗑  모든 데이터 초기화"
+        android:textColor="#FFFF6B6B"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="#33FF6B6B"
+        xmlns:app="http://schemas.android.com/apk/res-auto"/>
+</LinearLayout>
